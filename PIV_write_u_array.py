@@ -36,6 +36,8 @@ yfile = 'ignore/data/y_30cmsDiffuseFractalNeutral.npy'
 vec_data = io.load_vc7(vc7_files[0])
 x_vec, y_vec = vec_data['x'].values, vec_data['y'].values
 DEBUG(f'x_vec shape: {x_vec.shape}')
+DEBUG(f'xmin: {np.min(x_vec)}, xmax: {np.max(x_vec)}, ymin: {np.min(y_vec)}, ymax: {np.max(y_vec)}')
+DEBUG(f'origin position: {np.where((-0.38 < x_vec) & (x_vec < 0.38))}, {np.where((-0.38 < y_vec) & (y_vec < 0.38))}')
 xg, yg = np.meshgrid(x_vec, y_vec)
 DEBUG(f'x and y grid shape: {xg.shape}')
 spatial_res = x_vec[2] - x_vec[1]
@@ -44,6 +46,7 @@ DEBUG(f'spatial resolution: {spatial_res}')
 # QC plot u and v if needed
 if QC_plot:
     u_grid, v_grid = np.squeeze(vec_data['u'].values), np.squeeze(vec_data['v'].values)
+    DEBUG(f'vval1:{v_grid[350, 395]}')
     v_grid = -1*v_grid  # vertical positive and negative directions are opposite for DaVis vs Python
     DEBUG(f'u_vec shape: {u_grid.shape}')
 
@@ -59,7 +62,7 @@ u_stack = np.zeros((u_grid.shape[0], u_grid.shape[1], n_frames))
 v_stack = np.zeros((v_grid.shape[0], v_grid.shape[1], n_frames))
 
 for i in range(n_frames):
-    vec_data = io.load_vc7(vc7_files[0])
+    vec_data = io.load_vc7(vc7_files[i])
     u = np.squeeze(vec_data['u'].values)
     v = np.squeeze(vec_data['v'].values)
     v = -1 * v  # correct for vertical positive/negative in DaVis vs Python
