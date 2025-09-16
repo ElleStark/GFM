@@ -23,10 +23,10 @@ DEBUG = logger.debug
 
 # read in .im7 files using lavision io package
 # set path1 to data of laser that fires first, path2 to second
-path1 = 'I:/9.10.2025_sourceConfig_PLIF/data_9.10.2025_30cms_FractalTG_diffusiveSource_53pctneuHe0.857_47pctAir0.771_PIV0.2_L4/Subtract_bg_L4/Divide_ffmbg_L4/Divide_C0_18.62/AddCameraAttributes/ImageCorrection/Resize.set'
-path2 = 'I:/9.10.2025_sourceConfig_PLIF/data_9.10.2025_30cms_FractalTG_diffusiveSource_53pctneuHe0.857_47pctAir0.771_PIV0.2_L4/Subtract_bg_L3/Divide_ffmbg_L3/Divide_C0_20.26/AddCameraAttributes/ImageCorrection/Resize.set'
-save_file_data = 'ignore/data/30cms_diffuse_fractal_neutralHe_PLIF_noSmooth.npy'
-save_file_ani = 'ignore/animations/30cms_diffuse_fractal_neutralHe_PLIFv2.mp4'
+path1 = 'D:/Elle/8.29.2025_Buoyancy_PLIF/data_8.29_30cms_smTG15cm_dense45pctHe0.816_55pctair1.0_PIV0.02_Iso_L4/Subtract_bg_L4_01/Divide_ffmbg_L4/Divide_C0_11.4/AddCameraAttributes/ImageCorrection/Resize.set'
+path2 = 'D:/Elle/8.29.2025_Buoyancy_PLIF/data_8.29_30cms_smTG15cm_dense45pctHe0.816_55pctair1.0_PIV0.02_Iso_L4/Subtract_bg_L3_01/Divide_ffmbg_L3/Divide_C0_11.1/AddCameraAttributes/ImageCorrection/Resize.set'
+save_file_data = 'ignore/data/PLIF_30cms_smTG15cm_45pctHe.npy'
+save_file_ani = 'ignore/animations/PLIF_30cms_smTG15cm_45pctHe.mp4'
 
 # Plotting parameter selections
 vmin=0.015
@@ -36,6 +36,7 @@ norm = colors.LogNorm(vmin=vmin, vmax=vmax)
 # norm = colors.Normalize(vmin=vmin, vmax=vmax)
 QC = False  # True for individual plots at each timestep
 save_data = True
+title = None
 
 # misc. user-set params
 offset = 0  # frame to start on
@@ -95,7 +96,7 @@ combined_data[combined_data<vmin] = vmin
 img_display = ax.imshow(combined_data[:, :, 0], cmap=cmap, norm=norm)
 plt.colorbar(img_display)
 ax.set_aspect('equal')
-ax.set_title("30 cm/s Diffusive source, fractal grid, neutral He")
+ax.set_title(title)
 ax.set_xticks([])
 ax.set_yticks([])
 
