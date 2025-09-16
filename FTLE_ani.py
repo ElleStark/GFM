@@ -8,16 +8,16 @@ import logging
 
 
 # load data
-input_npy = 'ignore/data/FTLE_0.4s_30cmsDiffusiveFractalNeutral.npy'  # shape: (n_frames, ny, nx)
+input_npy = 'ignore/data/FTLE_0.4s_30cmsFractalNeutral50pctDilute.npy'  # shape: (n_frames, ny, nx)
 ftle_data = np.load(input_npy)
 
 # set plotting params
-save_file_ani = 'ignore/plots/ftle_full.mp4'
+save_file_ani = 'ignore/plots/ftle_ridges_FractalDilute.mp4'
 cmap = cmr.amber
 vmin = 0
 vmax = 15
 norm = norm = colors.Normalize(vmin=vmin, vmax=vmax)
-nframes_to_plot = 92
+nframes_to_plot = 60
 
 ##### CREATE ANIMATION ######
 
@@ -29,7 +29,7 @@ fig, ax = plt.subplots(figsize=(25.6, 14.4))
 img_display = ax.imshow(ftle_data[0, :, :], cmap=cmap, norm=norm)
 plt.colorbar(img_display)
 ax.set_aspect('equal')
-ax.set_title("30 cm/s Diffusive source, fractal grid, neutral He")
+ax.set_title("30 cm/s  fractal grid, neutral He, 50% dilution")
 ax.set_xticks([])
 ax.set_yticks([])
 
@@ -44,7 +44,7 @@ ani = animation.FuncAnimation(fig, update, frames=nframes_to_plot, interval=50, 
 rcParams['animation.ffmpeg_path'] = r"C:/Users/elles/AppData/Local/ffmpeg-6.0-essentials_build/bin/ffmpeg.exe" 
 
 # Create writer object
-Writer = animation.FFMpegWriter(fps=20, bitrate=1800)
+Writer = animation.FFMpegWriter(fps=20)
 
 # Save or display animation
 ani.save(save_file_ani, writer=Writer, dpi=150)  
