@@ -8,16 +8,16 @@ import logging
 
 
 # load data
-input_npy = 'ignore/data/FTLE_0.4s_30cmsFractalNeutral50pctDilute.npy'  # shape: (n_frames, ny, nx)
+input_npy = 'ignore/data/FTLE_0.4s_30cmsDiffusiveFractalNeutral.npy'  # shape: (n_frames, ny, nx)
 ftle_data = np.load(input_npy)
 
 # set plotting params
-save_file_ani = 'ignore/plots/ftle_ridges_FractalDilute.mp4'
+save_file_ani = 'ignore/plots/ftle_ridges_test.mp4'
 cmap = cmr.amber
-vmin = 0
-vmax = 15
+vmin = None
+vmax = None
 norm = norm = colors.Normalize(vmin=vmin, vmax=vmax)
-nframes_to_plot = 60
+nframes_to_plot = 1
 
 ##### CREATE ANIMATION ######
 
