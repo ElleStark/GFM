@@ -20,17 +20,17 @@ WARN = logger.warning
 DEBUG = logger.debug
 
 # specify source directory and get list of files. assumes PIV data is in .vc7 format
-piv_dir = 'D:/Elle/Source_config_PIV/9.10_30cms_FractalTG_diffusiveSource_53pctneuHe0.857_47pctAir0.771_PIV0.2/StereoPIV_MPd(3x12x12_75%ov)_01/PostProc_interp_3x3smooth/Resize'
+piv_dir = 'D:/Elle/8.29.2025_20Hz_BuoyancyEffects/8.29_30cmsPWM2.25_smTG15cm_noHC_PIVairQ0.917_He0.453_air0.464_Iso_0.5Diluted/StereoPIV_MPd(3x12x12_75%ov)/PostProc_3x3smooth/Resize'
 vc7_files = sorted(glob(os.path.join(piv_dir, '*.vc7')))
 n_frames = len(vc7_files)  # specify subset if needed
 
 QC_plot = True
 
 # specify file names for saving arrays
-ufile = 'ignore/data/u_100to300_30cmsDiffuseFractalNeutral.npy'
-vfile = 'ignore/data/v_100to300_30cmsDiffuseFractalNeutral.npy'
-xfile = 'ignore/data/x_30cmsDiffuseFractalNeutral.npy'
-yfile = 'ignore/data/y_30cmsDiffuseFractalNeutral.npy'
+ufile = 'ignore/data/u_0to122_30cmsSmGridNeutral50pctDilute.npy'
+vfile = 'ignore/data/v_0to122_30cmsSmGridNeutral50pctDilute.npy'
+xfile = 'ignore/data/x_30cmsSmGridNeutral50pctDilute.npy'
+yfile = 'ignore/data/y_30cmsSmGridNeutral50pctDilute.npy'
 
 # extract vector data for first frame to get x and y grids
 vec_data = io.load_vc7(vc7_files[0])
