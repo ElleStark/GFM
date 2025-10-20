@@ -108,7 +108,7 @@ def update(frame):
 # Create animation
 ani = animation.FuncAnimation(fig, update, frames=nframes_to_plot, interval=50, blit=False)
 # Set FFmpeg writer path
-rcParams['animation.ffmpeg_path'] = r"C:/Users/LaVision/AppData/Local/Programs/ffmpeg-7.1-essentials_build/bin/ffmpeg.exe"  # Replace with your actual path
+rcParams['animation.ffmpeg_path'] = r"C:/Users/LaVision/AppData/Local/Programs/ffmpeg-7.1-essentials_build/bin/ffmpeg.exe"  
 
 # Create writer object
 Writer = animation.FFMpegWriter(fps=20, bitrate=1800)
